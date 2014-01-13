@@ -1,0 +1,3 @@
+# This is added so when I want to update my installation I can safely do that without git trying to warn me
+bundle/**
+~bundle/vundle

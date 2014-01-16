@@ -221,15 +221,15 @@ cmap <C-P> <C-R>=expand("%:p:h") . "/" <CR>
 " ----------------------------------------------------------------------------
 " Source my scripts and add keybindings if needed
 " ----------------------------------------------------------------------------
-function! SourceMyScripts()
-  let file_list = split(globpath("~/.vim/scripts", "*.vim"), '\n')
+function! SourceMyConfig()
+  let file_list = split(globpath("~/.vim/config", "*.vim"), '\n')
 
   for file in file_list
     execute( 'source '.file )
   endfor
 endfunction
 
-call SourceMyScripts()
+call SourceMyConfig()
 
 nmap <leader>1 :call Class()<cr>
 nmap <leader>2 :call AddDependency()<cr>
@@ -374,6 +374,7 @@ if exists(':Bundle')
     Bundle 'othree/html5.vim.git'
     Bundle 'tomasr/molokai'
     Bundle 'scrooloose/nerdtree.git'
+    Bundle 'tobyS/pdv'
     Bundle 'ervandew/supertab.git'
     Bundle 'scrooloose/syntastic.git'
     Bundle 'SirVer/ultisnips.git'
@@ -405,6 +406,9 @@ end
                     let NERDChristmasTree=1
                     " Close nerdtree when it's the only buffer left open
                     autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+" pdv               https://github.com/tobyS/pdv.git
+                    let g:pdv_template_dir = $HOME ."/.vim/bundle/pdv/templates_snip"
+                    nnoremap <buffer> <Leader>pd :call pdv#DocumentWithSnip()<CR>
 " unimpaired        git://github.com/tpope/vim-unimpaired.git
 " powerline         https://github.com/Lokaltog/powerline.git
                     python from powerline.vim import setup as powerline_setup

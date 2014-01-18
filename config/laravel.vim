@@ -27,3 +27,4 @@ function! AddDependency()
     " Remove opening comma if there is only one dependency
     exec 'normal :%s/(, /(/g^M'
 endfunction
+" vim: set ts=4 sw=4 tw=80 :
